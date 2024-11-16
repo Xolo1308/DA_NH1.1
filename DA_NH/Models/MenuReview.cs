@@ -9,11 +9,13 @@ public partial class MenuReview
 
     public string? Name { get; set; }
 
+    public string? Description { get; set; }
+    public string? Image {  get; set; }
+
     public string? Phone { get; set; }
+    public string? Position { get; set; }
 
     public string? Email { get; set; }
-
-    public string? Detail { get; set; }
 
     public int? MenuItem { get; set; }
 
