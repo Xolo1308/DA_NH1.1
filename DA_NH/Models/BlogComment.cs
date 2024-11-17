@@ -14,7 +14,7 @@ public partial class BlogComment
     public string? Email { get; set; }
 
     public string? Detail { get; set; }
-
+    public DateTime? CreatedDate { get; set; }
     public int? BlogId { get; set; }
 
     public bool? IsActive { get; set; }

@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<DA_NH.Models.Blog>
 @foreach (var item in Model)
 {
+    string sUrl = $"/blog/{item.Alias}-{item.BlogId}.html";
     <div class="col-lg-6">
         <div class="row g-3">
 
@@ -15,6 +16,7 @@
         <h1 class="mb-4">Xin chào mừng <i class="fa fa-utensils text-primary me-2"></i> Delicio Restaurant </h1>
         <p class="mb-4">@item.Description</p>
               
-        <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+        <a class="btn btn-primary py-3 px-5 mt-2" href="@sUrl">Read More</a>
     </div>
+    
 }
