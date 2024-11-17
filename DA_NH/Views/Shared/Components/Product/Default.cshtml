@@ -1,10 +1,12 @@
 ﻿@model IEnumerable<DA_NH.Models.MenuItem>
 @foreach (var item in Model)
 {
+
+    string sUrl = $"/product/{item.Detail}-{item.MenuItemId}.html";
     <div class="col-lg-6">
         <div class="d-flex align-items-center">
-            <a href="shop.html" class="product-item_img">
-            <img class="flex-shrink-0 img-fluid rounded" src="@item.ImageUrl" alt="" style="width: 80px;">
+            <a href="@sUrl" class="product-item_img">
+            <img class="flex-shrink-0 img-fluid rounded" src="@item.ImageUrl" alt="" style="width: 100px;">
             </a>
             <div class="w-100 d-flex flex-column text-start ps-4">
                 <h5 class="d-flex justify-content-between border-bottom pb-2">
@@ -15,6 +17,7 @@
             </div>
         </div>
     </div>
+    
 
    
     

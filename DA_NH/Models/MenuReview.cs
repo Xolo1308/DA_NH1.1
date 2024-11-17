@@ -18,6 +18,8 @@ public partial class MenuReview
     public string? Email { get; set; }
 
     public int? MenuItem { get; set; }
+    public int? star {  get; set; }
+    public DateTime? CreateDate { get; set; }
 
     public bool? IsActive { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Identity.Client;
+using System;
 using System.Collections.Generic;
 
 namespace DA_NH.Models;
@@ -26,6 +27,7 @@ public partial class MenuItem
     public bool? IsNew { get; set; }
 
     public int? RestaurantId { get; set; }
+    public int? Star {  get; set; }
 
     public virtual MenuCategory? Category { get; set; }
 
