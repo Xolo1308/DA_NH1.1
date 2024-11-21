@@ -10,6 +10,7 @@ public partial class MenuItem
 
     public string Name { get; set; } = null!;
 
+    public string? Alias { get; set; }
     public string? Detail { get; set; }
 
     public string? Description { get; set; }
@@ -20,7 +21,7 @@ public partial class MenuItem
 
     public int? Quantity { get; set; }
 
-    public bool IsAvailable { get; set; }
+    public bool? IsAvailable { get; set; }
 
     public int? CategoryId { get; set; }
 

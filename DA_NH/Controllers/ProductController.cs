@@ -20,7 +20,7 @@ namespace DA_NH.Controllers
         }
         [Route("/product/{alias}-{id}.html")]
 
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details    (int? id)
         {
             if (id == null || _demoContext.MenuItems == null)
             {
