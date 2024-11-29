@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DA_NH.Models;
+using DA_NH.Utilities;
 
 namespace DA_NH.Areas.Admin.Controllers
 {
@@ -22,6 +23,8 @@ namespace DA_NH.Areas.Admin.Controllers
         // GET: Admin/Menus
         public async Task<IActionResult> Index()
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             return View(await _context.TblMenus.ToListAsync());
         }
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using DA_NH.Utilities;
 namespace WebApplication1.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -14,6 +14,8 @@ namespace WebApplication1.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             return View();
         }
     }

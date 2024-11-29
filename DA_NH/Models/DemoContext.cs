@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DA_NH.Areas.Admin.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DA_NH.Models;
@@ -48,8 +49,9 @@ public partial class DemoContext : DbContext
     public virtual DbSet<TblMenu> TblMenus { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<AdminUser> AdminUsers { get; set; }
 
-  
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

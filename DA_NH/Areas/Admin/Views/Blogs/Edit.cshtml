@@ -50,8 +50,8 @@
                                     <span asp-validation-for="Alias" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="CategoryId" class="control-lable">Danh mục </label>
-                                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId">
+                                    <label asp-for="Title" class="control-lable">Danh mục </label>
+                                    <select asp-for="Title" class="form-control" asp-items="ViewBag.CategoryId">
                                         <option value="0" selected>--[Chọn danh mục]--</option>
                                     </select>
                                 </div>
@@ -76,7 +76,11 @@
                                     <span asp-validation-for="Detail" class="text-danger"></span>
                                 </div>
                                 
-                               
+                                <div class="form-group">
+                                    <label asp-for="CreatedDate" class="control-lable">Thời gian </label>
+                                    <input asp-for="CreatedDate" class="form-control" />
+                                    <span asp-validation-for="CreatedDate" class="text-danger"></span>
+                                </div>
                               
                                 <div class="form-group form-check">
                                     <label class="form-check-label">
