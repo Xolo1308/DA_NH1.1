@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using DA_NH.Models;
 using Microsoft.AspNetCore.Mvc;
+using DA_NH.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<DemoContext>(options =>
@@ -8,6 +9,9 @@ builder.Services.AddDbContext<DemoContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 // Add services to the container.
+builder.Services.AddScoped<LoginAttemptService>();
+builder.Services.AddMemoryCache();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 var app = builder.Build();

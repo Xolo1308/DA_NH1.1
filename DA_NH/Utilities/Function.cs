@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using BCrypt.Net;
 
 namespace DA_NH.Utilities
 {
@@ -15,6 +16,19 @@ namespace DA_NH.Utilities
         {
             return SlugGenerator.SlugGenerator.GenerateSlug(title);
         }
+
+        // Mã hóa mật khẩu bằng Bcrypt
+        public static string HashPassword(string password)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(password);
+        }
+
+        // Xác thực mật khẩu
+        public static bool VerifyPassword(string password, string hashedPassword)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
+        }
+
         public static bool IsLogin()
         {
             if (string.IsNullOrEmpty(Function._UserName) || string.IsNullOrEmpty(Function._Email) || (Function._UserId <= 0))

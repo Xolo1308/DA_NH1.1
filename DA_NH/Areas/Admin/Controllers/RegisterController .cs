@@ -28,7 +28,15 @@ namespace DA_NH.Areas.Admin.Controllers
                 {
                     return NotFound();
                 }
-                var check = _context.AdminUsers.Where(m => m.Email == user.Email).FirstOrDefault();
+
+            // Kiểm tra mật khẩu có đúng 8 ký tự
+            if (!IsValidPassword(user.Password))
+            {
+                ViewBag.ErrorMessage = "Mật khẩu phải ít nhất 8 ký tự.";
+                return View();
+            }
+
+            var check = _context.AdminUsers.Where(m => m.Email == user.Email).FirstOrDefault();
                 if (check != null)
                 {
                     Function._MessageEmail = "Duplicate Email";
@@ -36,11 +44,19 @@ namespace DA_NH.Areas.Admin.Controllers
                 }
                 Function._MessageEmail = string.Empty;
 
+            // Mã hóa mật khẩu bằng Bcrypt
+            user.Password = Function.HashPassword(user.Password);
+
                 _context.Add(user);
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Login");
 
             }
-        
+
+        // Hàm kiểm tra mật khẩu hợp lệ
+        private bool IsValidPassword(string password)
+        {
+            return !string.IsNullOrEmpty(password) && password.Length == 8;
+        }
     }
 }
