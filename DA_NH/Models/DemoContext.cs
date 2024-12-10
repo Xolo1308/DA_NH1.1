@@ -48,7 +48,7 @@ public partial class DemoContext : DbContext
 
     public virtual DbSet<TblMenu> TblMenus { get; set; }
 
-    public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<User> User { get; set; }
     public virtual DbSet<AdminUser> AdminUsers { get; set; }
 
 
@@ -305,10 +305,11 @@ public partial class DemoContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => e.UserId);
 
             entity.Property(e => e.Password).HasMaxLength(50);
-            entity.Property(e => e.Username).HasMaxLength(50);
+            entity.Property(e => e.UserName).HasMaxLength(50);
+            entity.Property(e => e.Email).HasMaxLength(50);
         });
 
         OnModelCreatingPartial(modelBuilder);

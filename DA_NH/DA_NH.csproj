@@ -14,6 +14,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css1\css1\css\.DS_Store" />
+    <None Include="wwwroot\css1\css1\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\css1\css1\css\bootstrap\mixins\.DS_Store" />
+    <None Include="wwwroot\css1\css1\fonts\.DS_Store" />
+    <None Include="wwwroot\css1\css1\images\.DS_Store" />
+    <None Include="wwwroot\css1\css1\js\.DS_Store" />
+    <None Include="wwwroot\css1\css1\scss\.DS_Store" />
+    <None Include="wwwroot\css1\css1\scss\bootstrap\.DS_Store" />
+    <None Include="wwwroot\css3\css\.DS_Store" />
+    <None Include="wwwroot\css3\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\css3\css\bootstrap\mixins\.DS_Store" />
+    <None Include="wwwroot\css3\fonts\.DS_Store" />
+    <None Include="wwwroot\css3\images\.DS_Store" />
+    <None Include="wwwroot\css3\js\.DS_Store" />
+    <None Include="wwwroot\css3\scss\.DS_Store" />
+    <None Include="wwwroot\css3\scss\bootstrap\.DS_Store" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.0" />
     <PackageReference Include="elFinder.Net.Core" Version="1.5.0" />
     <PackageReference Include="elFinder.NetCore" Version="1.4.1" />

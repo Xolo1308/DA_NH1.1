@@ -2,10 +2,11 @@ using DA_NH.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using DA_NH.Controllers;
 
 namespace DA_NH.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly DemoContext _demoContext;
         private readonly ILogger<HomeController> _logger;

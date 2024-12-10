@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using DA_NH.Utilities;
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -33,6 +34,8 @@
 </head>
 
 <body>
+   
+     
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
         
@@ -50,9 +53,29 @@
                 </button>
                 <div class="collapse navbar-collapse ms-4" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4 d-flex gap-3">
-                     @await Component.InvokeAsync("MenuTop")
+                        @await Component.InvokeAsync("MenuTop")
+                        <ul class="nav navbar-nav">
+                            @{if(@ViewBag.UserName == null)
+                            {
+                           
+                               
+                                <li class="btn btn-primary py-2 px-7 ms-4">@Html.ActionLink("Đăng nhập", "Index", "Login")</li>
+                                <li class="btn btn-primary py-2 px-7 ms-4">@Html.ActionLink("Đăng ký", "Index", "Register")</li>
+                                
+                            }
+                            }
+                          @{if(@ViewBag.UserName != null)
+                              {
+                            <li><a style="color:wheat" href="#">Welcome: @ViewBag.UserName</a></li>
+                            
+                            <li class="btn btn-primary py-2 px-7 ms-4"><a asp-controller="Login" asp-action="Logout">Logout</a></li>
+                          }
+                          }
+                        </ul>
+                    
+                     
                    </div>
-                   <a href="" class="btn btn-primary py-2 px-7 ms-4">Book A Table</a>
+                   
                 </div>
             </nav>
 
