@@ -42,14 +42,11 @@
                                 <thead>
                                     <tr>
                                         <th>STT</th>
-                                        <th>Ho va ten</th>
-                                        <th>Sdt</th>
+                                        <th>Ho va ten</th>                                       
                                         <th>Tên tài khoản</th>
                                         <th>Email</th>
                                         <th>Mật khẩu </th>
-                                        <th>Địa chỉ </th>
-                                        <th>Ngày tạo </th>
-                                        <th>Hiển thị</th>
+                                       @*  <th>Trạng thái</th> *@
                                         <th>Chức năng</th>
                                         <th></th>
                                     </tr>
@@ -63,21 +60,22 @@
                                         <tr>
                                             <td>@(i++)</td>
                                             <td>@Html.DisplayFor(modelItem => item.FullName)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                                           
                                             <td>@Html.DisplayFor(modelItem => item.UserName)</td>
                                             <td>@Html.DisplayFor(modelItem => item.Email)</td>
                                             <td>@Html.DisplayFor(modelItem => item.Password)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.DateCreate)</td>
-
-                                            <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+                                           
+                                            
                                             <td>
                                                 <a a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-danger">Xóa</a>
+                                                <a a asp-action="Details" asp-route-id="@item.UserId" class="btn btn-info">Chi tiết </a>
+                                                <a a asp-action="Locout" asp-route-id="@item.UserId" class="btn btn-danger">Locout</a>
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
+                           
                         </div>
                     </div>
                 </div>

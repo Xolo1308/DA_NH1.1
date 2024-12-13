@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DemoContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    //options.Locout.AllowedForNewUsers = true; // Cho phép khóa tài khoản
 });
 // Add services to the container.
 builder.Services.AddScoped<LoginAttemptService>();

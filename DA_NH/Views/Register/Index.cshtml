@@ -34,8 +34,14 @@
 				</div>
 			<form novalidate asp-controller="Register" asp-action="Index">
 				<div class="form-group" >
+					<label for="yourName">FullName:</label>
+					<input type="FullName" asp-for="FullName" class="form-control" id="yourName" required >
+					
+				</div>
+				<div class="form-group" >
+
 					<label for="yourName">Username:</label>
-					<input type="text" asp-for="UserName" class="form-control" id="yourName" required >
+					<input type="UserName" asp-for="UserName" class="form-control" id="yourName" required >
 					
 				</div>
 				<div class="form-group">

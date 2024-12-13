@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using BCrypt.Net;
+using DA_NH.Models;
 
 namespace DA_NH.Utilities
 {
@@ -33,7 +34,10 @@ namespace DA_NH.Utilities
         {
             if (string.IsNullOrEmpty(Function._UserName) || string.IsNullOrEmpty(Function._Email) || (Function._UserId <= 0))
                 return false;
-            return true;
+
+			return true;
+
         }
-    }
+       
+	}
 }

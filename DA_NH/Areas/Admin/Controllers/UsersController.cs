@@ -37,17 +37,16 @@ namespace DA_NH.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.UserId == id);
+            var user = await _context.User.FirstOrDefaultAsync(m => m.UserId == id);
             if (user == null)
             {
                 return NotFound();
             }
-
-            return View(user);
+            var users = new List<User> {user};
+            return View(users);
         }
 
-        // GET: Admin/Users/Create
+		// GET: Admin/Users/Create
         public IActionResult Create()
         {
             return View();
@@ -70,56 +69,44 @@ namespace DA_NH.Areas.Admin.Controllers
             return View(user);
         }
 
-        // GET: Admin/Users/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: Admin/Users/Locout/5
+        public async Task<IActionResult> Locout(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.User.FindAsync(id);
+            var user = _context.User.FirstOrDefault(c => c.UserId == id);
             if (user == null)
             {
                 return NotFound();
             }
             return View(user);
         }
-
-        // POST: Admin/Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,Email,Password,IsActive")] User user)
+        public async Task<IActionResult>Locout(User user)
         {
-            if (id != user.UserId)
+            var userInfo = _context.User.FirstOrDefault(c => c.UserId == user.UserId);
+            if (userInfo == null)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            userInfo.LockoutEnabled = true;
+            userInfo.LockoutEnd = DateTime.Now.AddYears(100);
+            _context.User.Update(userInfo); 
+            int rowAffected = _context.SaveChanges();
+            if (rowAffected > 0)
             {
-                try
-                {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UserExists(user.UserId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                TempData["save"] = "khoa thanh cong";
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+           
+            return View(userInfo);
         }
+		
+        
+		
 
         // GET: Admin/Users/Delete/5
         public async Task<IActionResult> Delete(int? id)

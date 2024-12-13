@@ -55,7 +55,15 @@
 							<p class="mb-0">Nếu chưa có tài khoản. Vui lòng xin đăng ký!</p>
 							<a href="@Url.Action("Index", "Register")">Đăng ký </a>
 						</div>
+						@if (ViewBag.ErrorMessage != null)
+                                  {
+                                <div class="alert alert-danger">
+                                 @ViewBag.ErrorMessage
+                                 </div>
+                                 }
+
 					</div>
+
 				</div>
 			</div>
 		</div>

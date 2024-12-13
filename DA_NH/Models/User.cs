@@ -14,7 +14,10 @@ namespace DA_NH.Models
         public string? Phone { get; set; }
         public DateTime? DateCreate { get; set; }
         public string? Address { get; set; }
-		public bool? IsActive { get; set; }
+        public DateTime? LockoutEnd { get; set; }
+        public bool? IsActive { get; set; }
+		public bool? IsLocked { get; set; }
+        public bool? LockoutEnabled { get; set; }
 
-    }
+	}
 }

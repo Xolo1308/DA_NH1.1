@@ -31,8 +31,22 @@ namespace DA_NH.Controllers
               {
                   return NotFound();
               }
+            // Tìm kiếm tài khoản trong cơ sở dữ liệu
+            var userInfo = _demoContext.User.FirstOrDefault(m => m.UserName == user.UserName);
 
-              if (HttpContext.Session.GetString("UserName") == null)
+            if (userInfo == null)
+            {
+                ViewBag.ErrorMessage = "Tài khoản không tồn tại.";
+                return View();
+            }
+
+            // Kiểm tra trạng thái khóa tài khoản
+            if (userInfo.LockoutEnd > DateTime.Now)
+            {
+                ViewBag.ErrorMessage = "Tài khoản đã bị khóa. Vui lòng thử lại sau.";
+                return View();
+            }
+            if (HttpContext.Session.GetString("UserName") == null)
               {
                 var check = _demoContext.User.Where(m => (m.UserName == user.UserName) && (m.Password == user.Password)).FirstOrDefault();
                 Function._Message = " Thông báo có kẻ xuân nhập!";
