@@ -1,0 +1,22 @@
+﻿@model IEnumerable<DA_NH.Models.Blog>
+@foreach (var item in Model)
+{
+    string sUrl = $"/blog/{item.Alias}-{item.BlogId}.html";
+    <div class="col-lg-6">
+        <div class="row g-3">
+
+            <div class="col-12 text-start">
+                <img class="img-fluid rounded w-200 wow zoomIn" data-wow-delay="0.1s" src="@item.Image" alt="" style="width: 500px;">
+            </div>
+           
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <h5 class="section-title ff-secondary text-start text-primary fw-normal">@item.Title</h5>
+        <h1 class="mb-4">Xin chào mừng đến với nhà hàng <i class="fa fa-utensils text-primary me-2"></i> Hoàng Phúc </h1>
+        <p class="mb-4">@item.Description</p>
+
+        <a class="btn btn-primary py-3 px-5 mt-2" href="@sUrl">Read More</a>
+    </div>
+    
+}

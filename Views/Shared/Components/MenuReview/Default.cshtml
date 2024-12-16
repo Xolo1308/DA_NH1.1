@@ -1,0 +1,20 @@
+﻿@model IEnumerable<DA_NH.Models.MenuReview>
+<div class="owl-carousel testimonial-carousel">
+@foreach (var item in Model)
+{
+        <div class="testimonial-item bg-transparent border rounded p-4">
+            <i class="fa fa-quote-left fa-2x text-primary mb"></i>
+            <p>@item.Description</p>
+            <div class="d-flex align-items-center">
+                <img class="img-fluid flex-shrink-0 rounded-circle" src="@item.Image" style="width: 50px; height: 50px;">
+                <div class="ps-2">
+                    <h5 class="mb-1">@item.Name</h5>
+                    <small>@item.Position</small>
+                </div>
+            </div>
+        </div>
+
+        
+
+}
+</div>

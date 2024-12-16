@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DA_NH.Models.User>
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Details</h1>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Thông tin chi tiết khách hàng </h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active"></li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"></h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Họ và tên </th>
+                                        <th>Sdt</th>
+                                        <th>Tên tài khoản</th>
+                                        <th>Email</th>
+                                        <th>Mật khẩu </th>
+                                        <th>Địa chỉ </th>
+                                        <th>Ngày tạo </th>
+                                        <th>Hiển thị</th>
+                                       
+                                       
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.UserId</td>
+                                            <td>@item.FullName</td>
+                                            <td>@item.Phone</td>
+                                            <td>@item.UserName</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.Password</td>
+                                            <td>@item.Address</td>
+                                            <td>@item.DateCreate</td>
+                                            <td>@item.IsActive</td>
+                                           
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                           
+                        </div>
+                        <a asp-action="Index" class="btn btn-primary">Quay lại</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

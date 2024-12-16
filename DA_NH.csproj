@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Admin\Data\**" />
+    <Content Remove="Areas\Admin\Data\**" />
+    <EmbeddedResource Remove="Areas\Admin\Data\**" />
+    <None Remove="Areas\Admin\Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css1\css1\css\.DS_Store" />
+    <None Include="wwwroot\css1\css1\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\css1\css1\css\bootstrap\mixins\.DS_Store" />
+    <None Include="wwwroot\css1\css1\fonts\.DS_Store" />
+    <None Include="wwwroot\css1\css1\images\.DS_Store" />
+    <None Include="wwwroot\css1\css1\js\.DS_Store" />
+    <None Include="wwwroot\css1\css1\scss\.DS_Store" />
+    <None Include="wwwroot\css1\css1\scss\bootstrap\.DS_Store" />
+    <None Include="wwwroot\css3\css\.DS_Store" />
+    <None Include="wwwroot\css3\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\css3\css\bootstrap\mixins\.DS_Store" />
+    <None Include="wwwroot\css3\fonts\.DS_Store" />
+    <None Include="wwwroot\css3\images\.DS_Store" />
+    <None Include="wwwroot\css3\js\.DS_Store" />
+    <None Include="wwwroot\css3\scss\.DS_Store" />
+    <None Include="wwwroot\css3\scss\bootstrap\.DS_Store" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.0" />
+    <PackageReference Include="elFinder.Net.Core" Version="1.5.0" />
+    <PackageReference Include="elFinder.NetCore" Version="1.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+    <PackageReference Include="SlugGenerator" Version="2.0.2" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="10.5.7" />
+  </ItemGroup>
+
+</Project>
