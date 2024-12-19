@@ -18,5 +18,16 @@ namespace WebApplication1.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Login");
             return View();
         }
+        public IActionResult Logout()
+        {
+            Function._UserId = 0;
+            Function._UserName = string.Empty;
+            Function._Email = string.Empty;
+            Function._Message = string.Empty;
+            Function._MessageEmail = string.Empty;
+
+            return RedirectToAction("Index", "Login");
+
+        }
     }
 }
