@@ -52,7 +52,7 @@ public partial class DemoContext : DbContext
     public virtual DbSet<AdminUser> AdminUsers { get; set; }
 
 
-
+    public virtual DbSet<TblContact> TblContacts { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Admin>(entity =>
@@ -301,6 +301,19 @@ public partial class DemoContext : DbContext
             entity.Property(e => e.ModifiedBy).HasMaxLength(150);
             entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
             entity.Property(e => e.Title).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<TblContact>(entity =>
+        {
+            entity.HasKey(e => e.tblContactId);
+
+            entity.ToTable("tblContact");
+
+            entity.Property(e => e.CreatedBy).HasMaxLength(50);
+            entity.Property(e => e.CreateDate).HasColumnType("datetime");
+            entity.Property(e => e.Email).HasMaxLength(50);
+            entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.Phone).HasMaxLength(50);
         });
 
         modelBuilder.Entity<User>(entity =>
