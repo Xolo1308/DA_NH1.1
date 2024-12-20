@@ -55,14 +55,13 @@
                                         <option value="0" selected>--[Chọn danh mục]--</option>
                                     </select>
                                 </div>
-                                <div class=form-group>
+                                <div class="form-group">
                                     <label asp-for="Image" class="control-label">Ảnh</label>
                                     <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <button type="button" class="btn btn-sunccess" onclick="openDialog()">Choose a picture</button>
-
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-success" onclick="openDialog()">Choose a picture</button>
                                         </div>
-                                        <input type="text" class="form-control" id="file_input" asp-for="Image" aria-describedby="button" />
+                                        <input type="text" class="form-control" id="file_input" asp-for="Image" aria-describedby="button-addon2" />
                                     </div>
                                 </div>
 
@@ -73,7 +72,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Detail" class="control-lable">Chi tiết </label>
-                                    <input asp-for="Detail" class="form-control" />
+                                    <textarea asp-for="Detail" class="form-control"></textarea>
                                     <span asp-validation-for="Detail" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
@@ -168,4 +167,8 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+@{
+    var summerNote = new DA_NH.Areas.Admin.Models.SummerNote("#Detail");
+    <partial name="_SummerNote" model="summerNote" />
+}
 
