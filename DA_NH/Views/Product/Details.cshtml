@@ -1,6 +1,8 @@
 ﻿@using DA_NH.Models;
+@using DA_NH.Models.ViewModels;
+@using DA_NH.Utilities;
+@model DA_NH.Models.MenuItem;
 
-@model MenuItem
 @{
     Layout = "~/Views/Shared/_LayoutProduct.cshtml";
     List<MenuReview> productReview = ViewBag.productReview;
@@ -45,6 +47,7 @@
                         </div>
                     </div>
                 </div>
+              
                 <div class="col-lg-6">
                     <div class="product-thumb-with-content row">
                         <div class="col-12 order-lg-1 order-2 pt-10 pt-lg-0">
@@ -70,20 +73,40 @@
                                 <p class="short-desc mb-6">
                                     @Model.Description
                                 </p>
+                               
                                 <ul class="quantity-with-btn pb-7">
+                                   
+                             @*  đăng nhập mới được đặt hàng *@
+                                    @if(@ViewBag.UserName != null)
+                                     {
                                     <li class="quantity">
                                         <div class="cart-plus-minus">
                                             <input class="cart-plus-minus-box" value="1" type="text">
                                         </div>
                                     </li>
+                                   
                                     <li class="add-to-cart">
-                                        <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" href="cart.html">Add to cart</a>
-                                    </li>
+                                           
+                                        <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" asp-action="Add" asp-controller="Cart" asp-route-Id="@Model.MenuItemId">Add to cart</a>
+                                    </li>   
                                     <li class="wishlist-btn-wrap">
                                         <a class="btn rounded-0" href="wishlist.html">
                                             <i class="pe-7s-like"></i>
                                         </a>
                                     </li>
+                                     
+                                     }
+                                     else // nếu chưa đăng nhập k đặt dc hàng
+                                     {
+                                         <li>
+                                                <a class="btn btn-custom-size lg-size btn-secondary rounded-0"
+                                                   href="@Url.Action("Index", "Login")">
+                                                    Log in to add to cart
+                                                </a>
+                                         </li>
+                                      }
+                                       
+ 
                                 </ul>
                                 <div class="product-category text-matterhorn pb-2">
                                     <span class="title">Categories :</span>

@@ -36,6 +36,10 @@ namespace DA_NH.Controllers
                     .Where(i => i.MenuItem == id && (bool)i.IsActive).ToList();
             ViewBag.productRelated = _demoContext.MenuItems
             .Where(predicate: i => i.MenuItemId != id && i.CategoryId == product.CategoryId).OrderByDescending(i => i.MenuItemId).Take(10).ToList();
+           
+            // Kiểm tra trạng thái đăng nhập
+            ViewBag.UserName = HttpContext.Session.GetString("UserName");
+
             return View(product);
         }
     }

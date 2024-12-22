@@ -32,14 +32,10 @@
     <!-- Template Stylesheet -->
     <link href="~/asset/js/style.css" rel="stylesheet">
 </head>
-
 <body>
-   
-     
+ 
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
-        
-        
         <!-- Spinner End -->
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
@@ -69,6 +65,7 @@
                             <li><a style="color:wheat" href="#">Welcome: @ViewBag.UserName</a></li>
                             
                             <li class="btn btn-primary py-2 px-7 ms-4"><a asp-controller="Login" asp-action="Logout">Logout</a></li>
+                             <li class="btn btn-primary py-2 px-7 ms-4">@Html.ActionLink("shop", "Index", "Cart")</li>
                           }
                           }
                         </ul>
