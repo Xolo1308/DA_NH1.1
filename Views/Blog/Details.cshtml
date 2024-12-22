@@ -119,23 +119,24 @@
                             </div>
                             <div class="feedback-area section-space-top-55">
                                 <h4 class="heading mb-1">Leave a comment</h4>
-                                <form class="feedback-form pt-8" action="#">
+                                <form class="feedback-form pt-8" action="/Blog/Create" method="post">
+                                    <input type="hidden" id="c_id" name="id" value="@Model.BlogId">
                                     <div class="group-input">
                                         <div class="form-field me-md-6 mb-6 mb-md-0">
-                                            <input type="text" name="name" placeholder="Your Name*" class="input-field">
+                                            <input id="c_name" type="text" name="name" placeholder="Your Name*" class="input-field">
                                         </div>
                                         <div class="form-field me-md-6 mb-6 mb-md-0">
-                                            <input type="text" name="email" placeholder="Your Email*" class="input-field">
+                                            <input id="c_email" type="text" name="email" placeholder="Your Email*" class="input-field">
                                         </div>
                                         <div class="form-field">
-                                            <input type="text" name="number" placeholder="Phone number" class="input-field">
+                                            <input id="c_phone" type="text" name="phone" placeholder="Phone number" class="input-field">
                                         </div>
                                     </div>
                                     <div class="form-field mt-6">
-                                        <textarea name="message" placeholder="Message" class="textarea-field"></textarea>
+                                        <textarea id="c_message" name="message" placeholder="Message" class="textarea-field"></textarea>
                                     </div>
                                     <div class="button-wrap mt-8">
-                                        <button type="submit" value="submit" class="btn btn-custom-size lg-size btn-secondary btn-primary-hover btn-lg rounded-0" name="submit">Submit</button>
+                                        <button id="c_submit" type="submit" value="submit" class="btn btn-custom-size lg-size btn-secondary btn-primary-hover btn-lg rounded-0" name="submit">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -147,3 +148,43 @@
     </div>
 </main>
 <!-- Main Content Area End Here -->
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/assets/toastr/toastr.min.js"></script>
+    <link href="~/assets/toastr/toastr.css" />
+    <script>
+        $(document).ready(function () {
+            $("#c_submit").click(function (event) {
+                event.preventDefault(); // Ngăn chặn hành động mặc định của form
+
+                var _name = $("#c_name").val();
+                var _phone = $("#c_phone").val();
+                var _email = $("#c_email").val();
+                var _message = $("#c_message").val();
+                var _id = $("#c_id").val(); // Lấy ID của blog
+
+                $.ajax({
+                    url: "/Blog/Create",
+                    type: "POST",
+                    data: { id: _id, name: _name, phone: _phone, email: _email, message: _message },
+
+                    success: function (result) {
+                        if (result) {
+                            $("#c_name").val("");
+                            $("#c_phone").val("");
+                            $("#c_email").val("");
+                            $("#c_message").val("");
+                            toastr.success('Gửi thành công');
+                            location.reload(); // Tải lại trang
+                        } else {
+                            toastr.error('Gửi không thành công');
+                        }
+                    },
+                    error: function () {
+                        toastr.error('Đã xảy ra lỗi khi gửi dữ liệu');
+                    }
+                });
+            });
+        });
+    </script>
+}

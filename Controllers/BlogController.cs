@@ -30,5 +30,28 @@ namespace DA_NH.Controllers
             ViewBag.blogComment = _demoContext.BlogComments.Where(i => i.BlogId == id).ToList();
             return View(blog);
         }
+        public IActionResult Create(int id, string name, string phone, string email, string message)
+        {
+            try
+            {
+                BlogComment blog = new BlogComment();
+                blog.BlogId = id;
+                blog.Name = name;
+                blog.Phone = phone;
+                blog.Email = email;
+                blog.Detail = message;
+                blog.CreatedDate = DateTime.Now;
+                blog.IsActive = true;
+
+                _demoContext.Add(blog);
+                _demoContext.SaveChanges();
+
+                return Json(new { status = true });
+            }
+            catch
+            {
+                return Json(new { status = false });
+            }
+        }
     }
 }

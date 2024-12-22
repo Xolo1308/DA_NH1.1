@@ -27,7 +27,7 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="~/assets/css/style.css">
- 
+    <link href="~/assets/toastr/toastr.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -39,6 +39,7 @@
         <!-- Main Header Area End Here -->
         <!-- Begin Main Content Area -->
         @RenderBody()
+        @RenderSection("Scripts", required: false)
         <!-- Main Content Area End Here -->
         <!-- Begin Footer Area -->
         
@@ -69,6 +70,7 @@
     <script src="~/assets/js/plugins/jquery.nice-select.js"></script>
     <script src="~/assets/js/plugins/parallax.min.js"></script>
     <script src="~/assets/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="~/assets/toastr/toastr.min.js"></script>
 
     <!--Main JS (Common Activation Codes)-->
     <script src="~/assets/js/main.js"></script>
