@@ -46,7 +46,7 @@
                                         <th>Tên tài khoản</th>
                                         <th>Email</th>
                                         <th>Mật khẩu </th>
-                                       @*  <th>Trạng thái</th> *@
+                                         <th>Trạng thái</th> 
                                         <th>Chức năng</th>
                                         <th></th>
                                     </tr>
@@ -64,8 +64,16 @@
                                             <td>@Html.DisplayFor(modelItem => item.UserName)</td>
                                             <td>@Html.DisplayFor(modelItem => item.Email)</td>
                                             <td>@Html.DisplayFor(modelItem => item.Password)</td>
-                                           
                                             
+                                            @if(item.LockoutEnd>DateTime.Now&&item.LockoutEnd != null)
+                                            {
+                                                <td> Khóa </td>
+                                            }
+                                            else
+                                            {
+                                                <td> Hoạt động</td>
+                                            }
+
                                             <td>
                                                 <a a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-danger">Xóa</a>
                                                 <a a asp-action="Details" asp-route-id="@item.UserId" class="btn btn-info">Chi tiết </a>
